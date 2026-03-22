@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rusznikarz Premium</title>
+<link rel="icon" type="image/png" href="C:\Users\jacek\Desktop\strona\favicon-32x32.png">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {margin:0;background:#0a0a0a;font-family:Montserrat,sans-serif;color:#fff;}
+body::before {content:"";position:fixed;width:100%;height:100%;background:url('https://www.transparenttextures.com/patterns/black-leather.png');opacity:0.25;z-index:-1;}
+
+body {
+    overflow-x:hidden;
+}
+
+header {
+    display:flex;
+    justify-content:space-between;
+    padding:20px 40px;
+    border-bottom:1px solid #c9a55c;
+    background:#111;
+}
+
+.logo {font-family:Cinzel,serif;color:#c9a55c;font-size:22px;}
+
+nav button {
+    background:none;
+    border:1px solid transparent;
+    color:#fff;
+    margin-left:15px;
+    cursor:pointer;
+    padding:8px 15px;
+}
+
+nav button:hover {
+    border:1px solid #c9a55c;
+    color:#c9a55c;
+}
+
+section {
+    position:absolute;
+    width:100%;
+    left:0;
+    top:80px;
+    padding:80px 20px;
+    text-align:center;
+
+    opacity:0;
+    transform: translateY(30px);
+    pointer-events:none;
+
+    transition: all 0.5s ease;
+}
+
+.active {
+    opacity:1;
+    transform: translateY(0);
+    pointer-events:auto;
+}
+
+h1,h2 {font-family:Cinzel,serif;color:#c9a55c;}
+.line {width:80px;height:2px;background:#c9a55c;margin:20px auto;}
+
+.card {max-width:900px;margin:40px auto;background:#111;padding:40px;border-radius:12px;border:1px solid rgba(201,165,92,0.2);}
+
+.services {display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+
+.service {
+    background:#1a1a1a;
+    padding:20px;
+    width:220px;
+    border:1px solid rgba(201,165,92,0.2);
+    transition:0.4s;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.service h3 {
+    color:#c9a55c;
+    margin:0;
+}
+
+.details {
+    max-height:0;
+    opacity:0;
+    transition:0.4s;
+    margin-top:10px;
+    font-size:14px;
+    color:#ccc;
+}
+
+.service:hover {
+    transform: scale(1.05);
+    border:1px solid #c9a55c;
+}
+
+.service:hover .details {
+    max-height:200px;
+    opacity:1;
+}
+
+.gallery {display:flex;flex-wrap:wrap;gap:15px;justify-content:center;}
+.gallery img {width:250px;height:160px;object-fit:cover;border-radius:8px;}
+
+.contact span {display:block;margin:10px 0;color:#ddd;}
+
+/* --- PRAWO --- */
+.law-buttons {
+    margin-top:20px;
+}
+
+.law-buttons button {
+    margin:10px;
+    padding:10px 20px;
+    background:none;
+    border:1px solid #c9a55c;
+    color:#c9a55c;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.law-buttons button:hover {
+    background:#c9a55c;
+    color:#000;
+}
+
+.law-details {
+    margin-top:20px;
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:0.4s;
+    color:#ccc;
+}
+
+.law-img {
+    width:300px;
+    margin-top:20px;
+    border-radius:10px;
+    border:1px solid #c9a55c;
+}
+    
+.gallery-item {
+    position:relative;
+    width:250px;
+    height:160px;
+    overflow:hidden;
+    border-radius:8px;
+}
+
+.gallery-item img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.4s;
+}
+
+/* overlay (ciemne tło) */
+.overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:10px;
+    opacity:0;
+    transition:0.4s;
+    color:#fff;
+    font-size:14px;
+}
+
+/* efekt hover */
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item:hover .overlay {
+    opacity:1;
+
+    
+}
+nav button.active-btn {
+    border:1px solid #c9a55c;
+    color:#c9a55c;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">RUSZNIKARZ</div>
+<nav>
+<button onclick="showSection('home')">Home</button>
+<button onclick="showSection('about')">O nas</button>
+<button onclick="showSection('services')">Usługi</button>
+<button onclick="showSection('gallery')">Realizacje</button>
+<button onclick="showSection('law')">Prawo</button>
+<button onclick="showSection('contact')">Kontakt</button>
+</nav>
+</header>
+
+<section id="home" class="active">
+<h1>RUSZNIKARZ</h1>
+<p>Specjalistyczna Pracownia Usług Strzeleckich i Technicznych</p>
+
+<img src="spust.jpg" style="width:25%; border-radius:10px; border:1px solid #c9a55c;">
+</section>
+
+<section id="about">
+<div class="card">
+<h2>O nas</h2>
+<div class="line"></div>
+<p>Nasz zespół tworzą dyplomowani rusznikarze, dla których broń palna to nie tylko praca, ale przede wszystkim pasja i rzemiosło przekazywane z pokolenia na pokolenie. Łączymy wieloletnie doświadczenie w naprawie broni krótkiej, długiej oraz myśliwskiej z nowoczesnym zapleczem technologicznym, co pozwala nam na podejmowanie się nawet najbardziej skomplikowanych zleceń. Każdy członek naszej ekipy posiada niezbędne kwalifikacje i uprawnienia, a wszystkie prace prowadzimy w oparciu o rygorystyczne przepisy koncesji MSWiA nr B-142/2026, co gwarantuje pełne bezpieczeństwo prawne powierzonego nam sprzętu. Specjalizujemy się w precyzyjnej diagnostyce i naprawach głównych, przywracając sprawność jednostkom uszkodzonym lub wyeksploatowanym przy użyciu oryginalnych części i sprawdzonych technik ślusarskich. W ramach profesjonalnej konserwacji oferujemy zaawansowane czyszczenie, przeglądy okresowe oraz zabezpieczanie powierzchni, które chronią broń przed trudnymi warunkami atmosferycznymi i korozją. Dla strzelców wymagających czegoś więcej prowadzimy tuning mechanizmów spustowych, personalizację osad oraz profesjonalny montaż i zerowanie optyki, dostosowując parametry broni do indywidualnej anatomii i potrzeb użytkownika. Jako aktywni strzelcy i myśliwi doskonale rozumiemy, że niezawodność sprzętu na strzelnicy czy w łowisku jest kluczowa, dlatego do każdego egzemplarza podchodzimy z najwyższą starannością, dokumentując każdą istotną modyfikację zgodnie z literą prawa.</p>
+</div>
+</section>
+
+<section id="services">
+<h2>Usługi</h2>
+<div class="line"></div>
+
+<div class="services">
+
+<div class="service">
+<h3>Naprawa broni</h3>
+<div class="details">
+<p>• Diagnostyka usterek</p>
+<p>• Wymiana części</p>
+<p>• Naprawa mechanizmów</p>
+</div>
+</div>
+
+<div class="service">
+<h3>Konserwacja</h3>
+<div class="details">
+<p>• Czyszczenie</p>
+<p>• Smarowanie</p>
+<p>• Ochrona przed korozją</p>
+</div>
+</div>
+
+<div class="service">
+<h3>Tuning i regulacja</h3>
+<div class="details">
+<p>• Regulacja spustu</p>
+<p>• Poprawa celności</p>
+<p>• Personalizacja</p>
+</div>
+</div>
+
+<div class="service">
+<h3>Montaż optyki</h3>
+<div class="details">
+<p>• Montaż lunet</p>
+<p>• Kalibracja</p>
+<p>• Dobór akcesoriów</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="gallery">
+<h2>Przykładowe realizacje</h2>
+<div class="line"></div>
+
+<div class="gallery">
+
+<div class="gallery-item">
+    <img src="karabin_snajperski.jfif">
+    <div class="overlay">
+        <p>Karabin snajperski<br>Regulacja spustu + poprawa celności</p>
+    </div>
+</div>
+
+<div class="gallery-item">
+    <img src="pistolet-sportowy.jpg">
+    <div class="overlay">
+        <p>Pistolet sportowy<br>Pełna konserwacja + czyszczenie</p>
+    </div>
+</div>
+
+<div class="gallery-item">
+    <img src="sztucer-myśliwski.jpg">
+    <div class="overlay">
+        <p>Karabin myśliwski<br>Montaż lunety + kalibracja</p>
+    </div>
+</div>
+
+</div>
+</section>
+
+<section id="law">
+
+<!-- NORMALNY WIDOK -->
+<div class="card" id="lawNormal">
+
+<h2>Informacje prawne</h2>
+<div class="line"></div>
+
+<p>Działalność zgodna z przepisami. Wymagane pozwolenia na broń.</p>
+
+<div class="law-box">
+    Legalność i Gwarancja Bezpieczeństwa
+Nasz warsztat działa w pełnej zgodności z obowiązującym prawem Rzeczypospolitej Polskiej. Posiadamy Koncesję MSWiA nr [WPISZ NUMER] na wytwarzanie oraz obrót bronią i amunicją. Każda usługa – od drobnej konserwacji po zaawansowane modyfikacje – wykonywana jest z zachowaniem najwyższych standardów bezpieczeństwa i rzemieślniczej precyzji.
+<br>
+<br>
+Przyjęcie broni do serwisu – Wymagania formalne
+Dbamy o literę prawa, dlatego proces przyjęcia broni do warsztatu jest przejrzysty i bezpieczny. Aby oddać broń do naprawy lub modyfikacji, niezbędne są:
+Ważna Legitymacja Posiadacza Broni (wpis odpowiadający dostarczonej jednostce).
+Dowód tożsamości właściciela.
+Wypełnienie protokołu przyjęcia, który stanowi podstawę do legalnego przechowywania broni w naszym magazynie na czas serwisu.
+Uwaga: Nie przyjmujemy broni od osób nieposiadających stosownych uprawnień oraz jednostek bez wyraźnych numerów seryjnych.
+<br>
+<br>
+Modyfikacje i istotne części broni
+Jako koncesjonowany podmiot, posiadamy uprawnienia do prac nad istotnymi częściami broni (lufa, zamek, komora zamkowa, baskila). Każda ingerencja w konstrukcję broni jest dokumentowana zgodnie z wymogami ewidencji MSWiA, co daje naszym klientom pewność, że ich jednostka pozostaje w pełni legalna po opuszczeniu warsztatu.
+<br>
+<br>
+Rusznikarnia S.P.U.S.T.
+Zakład wpisany do ewidencji podmiotów koncesjonowanych.
+Numer Koncesji: B-142/2026
+Adres wykonywania działalności: Gorlice
+Wszelkie prace rusznikarskie wymagają wcześniejszego umówienia wizyty i okazania dokumentów.
+   
+</div>
+
+<button onclick="showSaul()">📞</button>
+
+</div>
+
+<!-- SAUL MODE -->
+<div class="card" id="saulMode" style="display:none;">
+
+<h2>W razie legalnych kłopotów...</h2>
+<div class="line"></div>
+
+<img src="jacataca.png" class="law-img">
+
+<p style="margin-top:20px; color:#ccc;">Zadzwoń do Jacy. <br>(505) 503-4455</p>
+
+<button onclick="hideSaul()">⬅ Wróć</button>
+
+</div>
+
+</section>
+
+<section id="contact">
+<div class="card contact">
+<h2>Kontakt</h2>
+<div class="line"></div>
+<span>📞 +48 123 456 789</span>
+<span>✉ kontakt@rusznikarz.pl</span>
+<span>📍 Polska</span>
+</div>
+</section>
+
+<script>
+function showSection(id) {
+    const sections = document.querySelectorAll("section");
+    const buttons = document.querySelectorAll("nav button");
+
+    sections.forEach(sec => sec.classList.remove("active"));
+
+    setTimeout(() => {
+        document.getElementById(id).classList.add("active");
+    }, 200);
+
+    buttons.forEach(btn => btn.classList.remove("active-btn"));
+    event.target.classList.add("active-btn");
+}
+
+function toggleLaw() {
+    const el = document.getElementById("lawDetails");
+    if (el.style.maxHeight) {
+        el.style.maxHeight = null;
+        el.style.opacity = 0;
+    } else {
+        el.style.maxHeight = "200px";
+        el.style.opacity = 1;
+    }
+}
+
+function showSaul() {
+    document.getElementById("lawNormal").style.display = "none";
+    document.getElementById("saulMode").style.display = "block";
+}
+
+function hideSaul() {
+    document.getElementById("lawNormal").style.display = "block";
+    document.getElementById("saulMode").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
