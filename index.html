@@ -191,6 +191,103 @@ nav button.active-btn {
     color:#c9a55c;
 }
 
+/* --- RESPONSYWNOŚĆ --- */
+
+/* TABLETY */
+@media (max-width: 1024px) {
+    .services {
+        flex-wrap: wrap;
+    }
+
+    .service {
+        width: 45%;
+    }
+
+    .gallery-item {
+        width: 45%;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+/* TELEFONY */
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav button {
+        margin: 5px;
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+
+    section {
+        top: 120px;
+        padding: 40px 15px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .service {
+        width: 100%;
+    }
+
+    .gallery-item {
+        width: 100%;
+        height: 180px;
+    }
+
+    .law-img {
+        width: 90%;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+button {
+    touch-action: manipulation;
+}
+/* MAŁE TELEFONY */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    nav button {
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+}    
+    
 </style>
 </head>
 
@@ -212,7 +309,7 @@ nav button.active-btn {
 <h1>RUSZNIKARZ</h1>
 <p>Specjalistyczna Pracownia Usług Strzeleckich i Technicznych</p>
 
-<img src="spust.jpg" style="width:25%; border-radius:10px; border:1px solid #c9a55c;">
+<img src="spust.jpg" style="width:25%; max-width:300px; border-radius:10px; border:1px solid #c9a55c;">
 </section>
 
 <section id="about">
