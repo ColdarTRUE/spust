@@ -4,332 +4,228 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rusznikarz Premium</title>
-<link rel="icon" type="image/png" href="favicon-32x32.png">
+
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-body {margin:0;background:#0a0a0a;font-family:Montserrat,sans-serif;color:#fff;}
-body::before {content:"";position:fixed;width:100%;height:100%;background:url('https://www.transparenttextures.com/patterns/black-leather.png');opacity:0.25;z-index:-1;}
 
-body {
-    overflow-x:hidden;
-    margin:0;
+html {
+    scroll-behavior: smooth;
 }
 
+body {
+    margin:0;
+    background:#0a0a0a;
+    font-family:Montserrat;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+body::before {
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url('https://www.transparenttextures.com/patterns/black-leather.png');
+    opacity:0.25;
+    z-index:-1;
+}
+
+/* INTRO */
+#intro {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:#0a0a0a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    animation: fadeOut 2s ease forwards;
+    animation-delay:1.5s;
+}
+
+#intro h1 {
+    font-family:Cinzel;
+    color:#c9a55c;
+    font-size:40px;
+    letter-spacing:5px;
+    animation: zoom 1.5s ease;
+}
+
+@keyframes zoom {
+    from {transform:scale(0.5); opacity:0;}
+    to {transform:scale(1); opacity:1;}
+}
+
+@keyframes fadeOut {
+    to {opacity:0; visibility:hidden;}
+}
+
+/* NAV */
 header {
     position:fixed;
     top:0;
-    left:0;
     width:100%;
-    box-sizing:border-box;
-
     display:flex;
     justify-content:space-between;
     align-items:center;
-
     padding:20px 40px;
-    border-bottom:1px solid #c9a55c;
     background:#111;
-
+    border-bottom:1px solid #c9a55c;
     z-index:1000;
-    backdrop-filter: blur(6px);
 }
 
-.logo {font-family:Cinzel,serif;color:#c9a55c;font-size:22px;}
+.logo {
+    font-family:Cinzel;
+    color:#c9a55c;
+}
 
 nav button {
     background:none;
-    border:1px solid transparent;
+    border:none;
     color:#fff;
-    margin-left:15px;
+    margin-left:10px;
     cursor:pointer;
-    padding:8px 15px;
 }
 
 nav button:hover {
-    border:1px solid #c9a55c;
     color:#c9a55c;
 }
 
+/* SEKCJE */
 section {
-    position:absolute;
-    width:100%;
-    left:0;
-    top:100px;
-    padding:80px 20px;
+    padding:120px 20px;
     text-align:center;
 
     opacity:0;
-    transform: translateY(30px);
-    pointer-events:none;
-
-    transition: all 0.5s ease;
+    transform:translateY(50px);
+    transition:0.8s;
 }
 
-.active {
+section.visible {
     opacity:1;
-    transform: translateY(0);
-    pointer-events:auto;
+    transform:translateY(0);
 }
 
-h1,h2 {font-family:Cinzel,serif;color:#c9a55c;}
-.line {width:80px;height:2px;background:#c9a55c;margin:20px auto;}
+h1,h2 {
+    font-family:Cinzel;
+    color:#c9a55c;
+}
 
-.card {max-width:900px;margin:40px auto;background:#111;padding:40px;border-radius:12px;border:1px solid rgba(201,165,92,0.2);}
+.line {
+    width:80px;
+    height:2px;
+    background:#c9a55c;
+    margin:20px auto;
+}
 
-.services {display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+.card {
+    max-width:900px;
+    margin:auto;
+    background:#111;
+    padding:30px;
+    border-radius:10px;
+}
+
+/* USŁUGI */
+.services {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
 
 .service {
+    width:220px;
     background:#1a1a1a;
     padding:20px;
-    width:220px;
-    border:1px solid rgba(201,165,92,0.2);
-    transition:0.4s;
-    overflow:hidden;
     cursor:pointer;
-}
-
-.service h3 {
-    color:#c9a55c;
-    margin:0;
 }
 
 .details {
     max-height:0;
     opacity:0;
     transition:0.4s;
-    margin-top:10px;
-    font-size:14px;
-    color:#ccc;
 }
 
-.service:hover {
-    transform: scale(1.05);
-    border:1px solid #c9a55c;
-}
-
-.service:hover .details {
+.service.active .details {
     max-height:200px;
     opacity:1;
 }
 
-.gallery {display:flex;flex-wrap:wrap;gap:15px;justify-content:center;}
-.gallery img {width:250px;height:160px;object-fit:cover;border-radius:8px;}
-
-.contact span {display:block;margin:10px 0;color:#ddd;}
-
-/* --- PRAWO --- */
-.law-buttons {
-    margin-top:20px;
+/* GALERIA */
+.gallery {
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
 }
 
-.law-buttons button {
-    margin:10px;
-    padding:10px 20px;
-    background:none;
-    border:1px solid #c9a55c;
-    color:#c9a55c;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.law-buttons button:hover {
-    background:#c9a55c;
-    color:#000;
-}
-
-.law-details {
-    margin-top:20px;
-    max-height:0;
-    overflow:hidden;
-    opacity:0;
-    transition:0.4s;
-    color:#ccc;
-}
-
-.law-img {
-    width:300px;
-    margin-top:20px;
-    border-radius:10px;
-    border:1px solid #c9a55c;
-}
-    
 .gallery-item {
     position:relative;
     width:250px;
     height:160px;
-    overflow:hidden;
-    border-radius:8px;
 }
 
 .gallery-item img {
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:0.4s;
 }
 
-/* overlay (ciemne tło) */
 .overlay {
     position:absolute;
-    top:0;
-    left:0;
     width:100%;
     height:100%;
     background:rgba(0,0,0,0.7);
     display:flex;
-    align-items:center;
     justify-content:center;
-    text-align:center;
-    padding:10px;
+    align-items:center;
     opacity:0;
     transition:0.4s;
-    color:#fff;
-    font-size:14px;
 }
 
-/* efekt hover */
-.gallery-item:hover img {
-    transform: scale(1.1);
-}
-
-.gallery-item:hover .overlay {
+.gallery-item.active .overlay {
     opacity:1;
-
-    
-}
-nav button.active-btn {
-    border:1px solid #c9a55c;
-    color:#c9a55c;
 }
 
-/* --- RESPONSYWNOŚĆ --- */
-
-/* TABLETY */
-@media (max-width: 1024px) {
-    .services {
-        flex-wrap: wrap;
-    }
-
-    .service {
-        width: 45%;
-    }
-
-    .gallery-item {
-        width: 45%;
-    }
-
-    header {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        
-    }
+/* RESPONSYWNOŚĆ */
+@media(max-width:768px){
+    .service {width:100%;}
+    .gallery-item {width:100%;}
 }
 
-/* TELEFONY */
-@media (max-width: 768px) {
-
-    header {
-        flex-direction: column;
-        padding: 15px;
-    }
-
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    nav button {
-        margin: 5px;
-        padding: 6px 10px;
-        font-size: 14px;
-    }
-
-    section {
-        top: 120px;
-        padding: 40px 15px;
-    }
-
-    h1 {
-        font-size: 26px;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
-
-    .card {
-        padding: 20px;
-    }
-
-    .service {
-        width: 100%;
-    }
-
-    .gallery-item {
-        width: 100%;
-        height: 180px;
-    }
-
-    .law-img {
-        width: 90%;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-}
-button {
-    touch-action: manipulation;
-}
-/* MAŁE TELEFONY */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 22px;
-    }
-
-    h2 {
-        font-size: 18px;
-    }
-
-    nav button {
-        font-size: 12px;
-        padding: 5px 8px;
-    }
-}    
-    
 </style>
 </head>
 
 <body>
 
+<div id="intro"><h1>RUSZNIKARZ</h1></div>
+
 <header>
 <div class="logo">RUSZNIKARZ</div>
 <nav>
-<button onclick="showSection('home')">Home</button>
-<button onclick="showSection('about')">O nas</button>
-<button onclick="showSection('services')">Usługi</button>
-<button onclick="showSection('gallery')">Realizacje</button>
-<button onclick="showSection('law')">Prawo</button>
-<button onclick="showSection('contact')">Kontakt</button>
+<button onclick="go('home')">Home</button>
+<button onclick="go('about')">O nas</button>
+<button onclick="go('services')">Usługi</button>
+<button onclick="go('gallery')">Realizacje</button>
+<button onclick="go('law')">Prawo</button>
+<button onclick="go('contact')">Kontakt</button>
 </nav>
 </header>
 
-<section id="home" class="active">
+<section id="home">
 <h1>RUSZNIKARZ</h1>
-<p>Specjalistyczna Pracownia Usług Strzeleckich i Technicznych</p>
-
-<img src="spust.jpg" style="width:25%; max-width:300px; border-radius:10px; border:1px solid #c9a55c;">
+<p>Specjalistyczna Pracownia</p>
+<img src="spust.jpg" style="width:200px;">
 </section>
 
 <section id="about">
 <div class="card">
 <h2>O nas</h2>
 <div class="line"></div>
-<p>Nasz zespół tworzą dyplomowani rusznikarze, dla których broń palna to nie tylko praca, ale przede wszystkim pasja i rzemiosło przekazywane z pokolenia na pokolenie. Łączymy wieloletnie doświadczenie w naprawie broni krótkiej, długiej oraz myśliwskiej z nowoczesnym zapleczem technologicznym, co pozwala nam na podejmowanie się nawet najbardziej skomplikowanych zleceń. Każdy członek naszej ekipy posiada niezbędne kwalifikacje i uprawnienia, a wszystkie prace prowadzimy w oparciu o rygorystyczne przepisy koncesji MSWiA nr B-142/2026, co gwarantuje pełne bezpieczeństwo prawne powierzonego nam sprzętu. Specjalizujemy się w precyzyjnej diagnostyce i naprawach głównych, przywracając sprawność jednostkom uszkodzonym lub wyeksploatowanym przy użyciu oryginalnych części i sprawdzonych technik ślusarskich. W ramach profesjonalnej konserwacji oferujemy zaawansowane czyszczenie, przeglądy okresowe oraz zabezpieczanie powierzchni, które chronią broń przed trudnymi warunkami atmosferycznymi i korozją. Dla strzelców wymagających czegoś więcej prowadzimy tuning mechanizmów spustowych, personalizację osad oraz profesjonalny montaż i zerowanie optyki, dostosowując parametry broni do indywidualnej anatomii i potrzeb użytkownika. Jako aktywni strzelcy i myśliwi doskonale rozumiemy, że niezawodność sprzętu na strzelnicy czy w łowisku jest kluczowa, dlatego do każdego egzemplarza podchodzimy z najwyższą starannością, dokumentując każdą istotną modyfikację zgodnie z literą prawa.</p>
+<p>Profesjonalna rusznikarnia...</p>
 </div>
 </section>
 
@@ -340,38 +236,17 @@ button {
 <div class="services">
 
 <div class="service">
-<h3>Naprawa broni</h3>
+<h3>Naprawa</h3>
 <div class="details">
-<p>• Diagnostyka usterek</p>
-<p>• Wymiana części</p>
-<p>• Naprawa mechanizmów</p>
+<p>Diagnostyka</p>
+<p>Naprawa</p>
 </div>
 </div>
 
 <div class="service">
 <h3>Konserwacja</h3>
 <div class="details">
-<p>• Czyszczenie</p>
-<p>• Smarowanie</p>
-<p>• Ochrona przed korozją</p>
-</div>
-</div>
-
-<div class="service">
-<h3>Tuning i regulacja</h3>
-<div class="details">
-<p>• Regulacja spustu</p>
-<p>• Poprawa celności</p>
-<p>• Personalizacja</p>
-</div>
-</div>
-
-<div class="service">
-<h3>Montaż optyki</h3>
-<div class="details">
-<p>• Montaż lunet</p>
-<p>• Kalibracja</p>
-<p>• Dobór akcesoriów</p>
+<p>Czyszczenie</p>
 </div>
 </div>
 
@@ -379,134 +254,67 @@ button {
 </section>
 
 <section id="gallery">
-<h2>Przykładowe realizacje</h2>
+<h2>Realizacje</h2>
 <div class="line"></div>
 
 <div class="gallery">
 
 <div class="gallery-item">
-    <img src="karabin_snajperski.jfif">
-    <div class="overlay">
-        <p>Karabin snajperski<br>Regulacja spustu + poprawa celności</p>
-    </div>
-</div>
-
-<div class="gallery-item">
-    <img src="pistolet-sportowy.jpg">
-    <div class="overlay">
-        <p>Pistolet sportowy<br>Pełna konserwacja + czyszczenie</p>
-    </div>
-</div>
-
-<div class="gallery-item">
-    <img src="sztucer-myśliwski.jpg">
-    <div class="overlay">
-        <p>Karabin myśliwski<br>Montaż lunety + kalibracja</p>
-    </div>
+<img src="karabin.jpg">
+<div class="overlay">Regulacja</div>
 </div>
 
 </div>
 </section>
 
 <section id="law">
-
-<!-- NORMALNY WIDOK -->
-<div class="card" id="lawNormal">
-
-<h2>Informacje prawne</h2>
-<div class="line"></div>
-
-<p>Działalność zgodna z przepisami. Wymagane pozwolenia na broń.</p>
-
-<div class="law-box">
-    Legalność i Gwarancja Bezpieczeństwa
-Nasz warsztat działa w pełnej zgodności z obowiązującym prawem Rzeczypospolitej Polskiej. Posiadamy Koncesję MSWiA nr [WPISZ NUMER] na wytwarzanie oraz obrót bronią i amunicją. Każda usługa – od drobnej konserwacji po zaawansowane modyfikacje – wykonywana jest z zachowaniem najwyższych standardów bezpieczeństwa i rzemieślniczej precyzji.
-<br>
-<br>
-Przyjęcie broni do serwisu – Wymagania formalne
-Dbamy o literę prawa, dlatego proces przyjęcia broni do warsztatu jest przejrzysty i bezpieczny. Aby oddać broń do naprawy lub modyfikacji, niezbędne są:
-Ważna Legitymacja Posiadacza Broni (wpis odpowiadający dostarczonej jednostce).
-Dowód tożsamości właściciela.
-Wypełnienie protokołu przyjęcia, który stanowi podstawę do legalnego przechowywania broni w naszym magazynie na czas serwisu.
-Uwaga: Nie przyjmujemy broni od osób nieposiadających stosownych uprawnień oraz jednostek bez wyraźnych numerów seryjnych.
-<br>
-<br>
-Modyfikacje i istotne części broni
-Jako koncesjonowany podmiot, posiadamy uprawnienia do prac nad istotnymi częściami broni (lufa, zamek, komora zamkowa, baskila). Każda ingerencja w konstrukcję broni jest dokumentowana zgodnie z wymogami ewidencji MSWiA, co daje naszym klientom pewność, że ich jednostka pozostaje w pełni legalna po opuszczeniu warsztatu.
-<br>
-<br>
-Rusznikarnia S.P.U.S.T.
-Zakład wpisany do ewidencji podmiotów koncesjonowanych.
-Numer Koncesji: B-142/2026
-Adres wykonywania działalności: Gorlice
-Wszelkie prace rusznikarskie wymagają wcześniejszego umówienia wizyty i okazania dokumentów.
-   
-</div>
-
+<div class="card">
+<h2>Prawo</h2>
+<p>Legalność</p>
 <button onclick="showSaul()">📞</button>
-
 </div>
 
-<!-- SAUL MODE -->
-<div class="card" id="saulMode" style="display:none;">
-
-<h2>W razie legalnych kłopotów...</h2>
-<div class="line"></div>
-
-<img src="jacataca.png" class="law-img">
-
-<p style="margin-top:20px; color:#ccc;">Zadzwoń do Jacy. <br>(505) 503-4455</p>
-
-<button onclick="hideSaul()">⬅ Wróć</button>
-
+<div id="saul" style="display:none;">
+<h2>In legal trouble?</h2>
+<img src="saul.jpg" style="width:200px;">
 </div>
-
 </section>
 
 <section id="contact">
-<div class="card contact">
 <h2>Kontakt</h2>
-<div class="line"></div>
-<span>📞 +48 123 456 789</span>
-<span>✉ kontakt@rusznikarz.pl</span>
-<span>📍 Polska</span>
-</div>
 </section>
 
 <script>
-function showSection(id) {
-    const sections = document.querySelectorAll("section");
-    const buttons = document.querySelectorAll("nav button");
 
-    sections.forEach(sec => sec.classList.remove("active"));
-
-    setTimeout(() => {
-        document.getElementById(id).classList.add("active");
-    }, 200);
-
-    buttons.forEach(btn => btn.classList.remove("active-btn"));
-    event.target.classList.add("active-btn");
+/* scroll */
+function go(id){
+    document.getElementById(id).scrollIntoView();
 }
 
-function toggleLaw() {
-    const el = document.getElementById("lawDetails");
-    if (el.style.maxHeight) {
-        el.style.maxHeight = null;
-        el.style.opacity = 0;
-    } else {
-        el.style.maxHeight = "200px";
-        el.style.opacity = 1;
-    }
+/* animacje scroll */
+function reveal(){
+    document.querySelectorAll("section").forEach(sec=>{
+        if(sec.getBoundingClientRect().top < window.innerHeight*0.8){
+            sec.classList.add("visible");
+        }
+    });
 }
 
-function showSaul() {
-    document.getElementById("lawNormal").style.display = "none";
-    document.getElementById("saulMode").style.display = "block";
-}
+window.addEventListener("scroll",reveal);
+window.addEventListener("load",reveal);
 
-function hideSaul() {
-    document.getElementById("lawNormal").style.display = "block";
-    document.getElementById("saulMode").style.display = "none";
+/* klik mobile */
+document.querySelectorAll(".service").forEach(el=>{
+    el.onclick=()=>el.classList.toggle("active");
+});
+
+document.querySelectorAll(".gallery-item").forEach(el=>{
+    el.onclick=()=>el.classList.toggle("active");
+});
+
+/* saul */
+function showSaul(){
+    document.getElementById("saul").style.display="block";
 }
 
 </script>
