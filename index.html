@@ -8,25 +8,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
     margin:0;
     background:#0a0a0a;
-    font-family:Montserrat;
+    font-family:Montserrat, sans-serif;
     color:#fff;
     overflow-x:hidden;
-    font-size:120%;
+    font-size:110%;
 }
 
 body::before {
     content:"";
     position:fixed;
-    width:100%;
-    height:100%;
+    width:100%; height:100%;
     background:url('https://www.transparenttextures.com/patterns/black-leather.png');
     opacity:0.25;
     z-index:-1;
@@ -35,12 +31,9 @@ body::before {
 /* INTRO */
 #intro {
     position:fixed;
-    width:100%;
-    height:100%;
+    width:100%; height:100%;
     background:#0a0a0a;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    display:flex; justify-content:center; align-items:center;
     z-index:9999;
     animation: fadeOut 2s ease forwards;
     animation-delay:1.5s;
@@ -54,83 +47,56 @@ body::before {
     animation: zoom 1.5s ease;
 }
 
-@keyframes zoom {
-    from {transform:scale(0.5); opacity:0;}
-    to {transform:scale(1); opacity:1;}
-}
-
-@keyframes fadeOut {
-    to {opacity:0; visibility:hidden;}
-}
+@keyframes zoom { from {transform:scale(0.5); opacity:0;} to {transform:scale(1); opacity:1;} }
+@keyframes fadeOut { to {opacity:0; visibility:hidden;} }
 
 /* NAV */
 header {
     position:fixed;
-    top:0;
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    top:0; width:100%;
+    display:flex; justify-content:space-between; align-items:center;
     padding:20px 40px;
-    background:#111;
+    background:rgba(17, 17, 17, 0.95);
     border-bottom:1px solid #c9a55c;
     z-index:1000;
+    box-sizing: border-box;
 }
 
-.logo {
-    font-family:Cinzel;
-    color:#c9a55c;
-}
+.logo { font-family:Cinzel; color:#c9a55c; font-weight: 600; }
 
 nav button {
-    background:none;
-    border:none;
-    color:#fff;
-    margin-left:10px;
-    margin-right:10px;
-    cursor:pointer;
+    background:none; border:none;
+    color:#fff; margin: 0 10px;
+    cursor:pointer; font-family: Montserrat;
 }
 
-nav button:hover {
-    color:#c9a55c;
-}
+nav button:hover { color:#c9a55c; }
 
 /* SEKCJE */
 section {
     padding:120px 20px;
     text-align:center;
-
     opacity:0;
     transform:translateY(50px);
     transition:0.8s;
 }
 
-section.visible {
-    opacity:1;
-    transform:translateY(0);
-}
+section.visible { opacity:1; transform:translateY(0); }
 
-h1,h2 {
-    font-family:Cinzel;
-    color:#c9a55c;
-}
+h1, h2 { font-family:Cinzel; color:#c9a55c; }
 
-.line {
-    width:80px;
-    height:2px;
-    background:#c9a55c;
-    margin:20px auto;
-}
+.line { width:80px; height:2px; background:#c9a55c; margin:20px auto; }
 
 .card {
-    max-width:1000px;
+    max-width:900px;
     margin:auto;
     background:#111;
-    padding:30px;
+    padding:40px;
     border-radius:10px;
+    border: 1px solid #222;
 }
 
-/* USŁUGI */
+/* USŁUGI - NAPRAWIONE */
 .services {
     display:flex;
     flex-wrap:wrap;
@@ -139,65 +105,65 @@ h1,h2 {
 }
 
 .service {
-    width:220px;
-    background:#1a1a1a;
-    padding:20px;
+    width:260px;
+    background:#161616;
+    padding:25px;
     cursor:pointer;
+    border: 1px solid #222;
+    transition: 0.3s;
 }
+
+.service:hover { border-color: #c9a55c; }
 
 .details {
     max-height:0;
     opacity:0;
-    transition:0.4s;
+    overflow:hidden;
+    transition: 0.5s ease-in-out;
+    text-align: left;
+    font-size: 0.9em;
 }
 
 .service.active .details {
-    max-height:200px;
+    max-height: 500px; /* Zwiększone, by tekst się mieścił */
     opacity:1;
+    margin-top: 15px;
 }
 
 /* GALERIA */
 .gallery {
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
-    justify-content:center;
+    display:flex; flex-wrap:wrap;
+    gap:15px; justify-content:center;
 }
 
 .gallery-item {
     position:relative;
-    width:250px;
-    height:160px;
+    width:300px; height:200px;
+    cursor: pointer;
+    overflow: hidden;
 }
 
-.gallery-item img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
+.gallery-item img { width:100%; height:100%; object-fit:cover; }
 
 .overlay {
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.7);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    opacity:0;
-    transition:0.4s;
+    position:absolute; top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.85);
+    display:flex; justify-content:center; align-items:center;
+    opacity:0; transition:0.4s; padding: 20px; box-sizing: border-box;
+    color: #c9a55c; text-align: center;
 }
 
-.gallery-item.active .overlay {
-    opacity:1;
-}
+.gallery-item.active .overlay { opacity:1; }
 
-/* RESPONSYWNOŚĆ */
+/* KONTAKT */
+.contact-info p { margin: 10px 0; }
+.contact-info strong { color: #c9a55c; }
+
 @media(max-width:768px){
-    .service {width:100%;}
-    .gallery-item {width:100%;}
+    header { flex-direction: column; gap: 15px; }
+    .service, .gallery-item { width:100%; }
 }
-
 </style>
 </head>
 
@@ -206,133 +172,130 @@ h1,h2 {
 <div id="intro"><h1>RUSZNIKARZ</h1></div>
 
 <header>
-<div class="logo">RUSZNIKARZ</div>
-<nav>
-
-<button onclick="go('about')">O nas</button>
-<button onclick="go('services')">Usługi</button>
-<button onclick="go('gallery')">Realizacje</button>
-<button onclick="go('law')">Prawo</button>
-<button onclick="go('contact')">Kontakt</button>
-</nav>
+    <div class="logo">S.P.U.S.T.</div>
+    <nav>
+        <button onclick="go('about')">O nas</button>
+        <button onclick="go('services')">Usługi</button>
+        <button onclick="go('gallery')">Realizacje</button>
+        <button onclick="go('law')">Prawo</button>
+        <button onclick="go('contact')">Kontakt</button>
+    </nav>
 </header>
 
 <section id="home">
-<h1>RUSZNIKARZ</h1>
-<p>Specjalistyczna Pracownia</p>
-<img src="spust.jpg" style="width:200px;">
+    <h1>RUSZNIKARZ</h1>
+    <p>Specjalistyczna Pracownia Usług Strzelecko-Technicznych</p>
+    <div class="line"></div>
+    <img src="spust.jpg" style="width:250px; border-radius: 50%;">
 </section>
 
 <section id="about">
-<div class="card">
-<h2>O nas</h2>
-<div class="line"></div>
-<p>Profesjonalna rusznikarnia...</p>
-</div>
+    <div class="card">
+        <h2>O nas</h2>
+        <div class="line"></div>
+        <p>Jesteśmy profesjonalną rusznikarnią z pasją do broni palnej. Nasza pracownia łączy tradycyjne rzemiosło z nowoczesnymi technologiami diagnostycznymi. Każdy egzemplarz broni traktujemy indywidualnie, dbając o jego niezawodność, bezpieczeństwo użytkowania oraz estetykę wykonania.</p>
+        <p>Dzięki wieloletniemu doświadczeniu w serwisowaniu broni sportowej, myśliwskiej oraz kolekcjonerskiej, jesteśmy w stanie sprostać nawet najbardziej wymagającym projektom renowacyjnym i tuningowym.</p>
+    </div>
 </section>
 
 <section id="services">
-    <h2>Usługi</h2>
+    <h2>Nasze Usługi</h2>
     <div class="line"></div>
-
     <div class="services">
-        <!-- Usługa 1 -->
         <div class="service">
             <h3>Naprawa i Serwis</h3>
             <div class="details">
-                <p>• Diagnostyka usterek i awarii</p>
-                <p>• Usuwanie zacięć mechanizmów</p>
-                <p>• Wymiana części (iglice, sprężyny)</p>
-                <p>• Naprawa mechanizmów spustowych</p>
+                <p>• Diagnostyka komputerowa i manualna</p>
+                <p>• Usuwanie zacięć i awarii mechanizmów</p>
+                <p>• Wymiana iglic, pazurów wyciągu i sprężyn</p>
+                <p>• Naprawa mechanizmów uderzeniowych</p>
             </div>
         </div>
 
-        <!-- Usługa 2 -->
         <div class="service">
             <h3>Konserwacja</h3>
             <div class="details">
-                <p>• Czyszczenie ultradźwiękowe</p>
-                <p>• Usuwanie miedzi i ołowiu z lufy</p>
-                <p>• Profesjonalne smarowanie i oksydowanie</p>
-                <p>• Zabezpieczenie przed korozją</p>
+                <p>• Czyszczenie w myjkach ultradźwiękowych</p>
+                <p>• Chemiczne usuwanie miedzi z przewodu lufy</p>
+                <p>• Profesjonalne smarowanie odporne na temperatury</p>
+                <p>• Nakładanie nowych powłok ochronnych (oksydowanie)</p>
             </div>
         </div>
 
-        <!-- Usługa 3 -->
         <div class="service">
-            <h3>Modernizacja i Tuning</h3>
+            <h3>Modernizacja</h3>
             <div class="details">
-                <p>• Montaż i przystrzeliwanie optyki</p>
-                <p>• Wymiana przyrządów celowniczych</p>
-                <p>• Tuning spustu (zmniejszenie oporu)</p>
-                <p>• Instalacja szyn i akcesoriów</p>
+                <p>• Montaż i poziomowanie optyki celowniczej</p>
+                <p>• Tuning mechanizmów spustowych</p>
+                <p>• Przystrzeliwanie broni na strzelnicy</p>
+                <p>• Gwintowanie końcówek luf pod urządzenia wylotowe</p>
             </div>
         </div>
 
-        <!-- Usługa 4 -->
         <div class="service">
-            <h3>Renowacja Osad</h3>
+            <h3>Drewno</h3>
             <div class="details">
-                <p>• Odnawianie kolb drewnianych</p>
-                <p>• Olejowanie i woskowanie drewna</p>
-                <p>• Naprawa pęknięć i ubytków</p>
-                <p>• Personalizacja chwytów</p>
+                <p>• Renowacja starych osad i kolb</p>
+                <p>• Olejowanie i woskowanie ręczne</p>
+                <p>• Naprawa pęknięć i wstawek drewnianych</p>
+                <p>• Odświeżanie moletowania (nacięć chwytu)</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- SEKCJA GALERIA -->
 <section id="gallery">
     <h2>Realizacje</h2>
     <div class="line"></div>
-
     <div class="gallery">
-        <!-- Pozycja 1 -->
         <div class="gallery-item">
-            <img src="karabin_snajperski.jfif" alt="Karabin snajperski">
-            <div class="overlay">Kompleksowa regulacja i przystrzelanie</div>
+            <img src="karabin_snajperski.jfif">
+            <div class="overlay">Precyzyjna regulacja mechanizmu spustowego</div>
         </div>
-
-        <!-- Pozycja 2 -->
         <div class="gallery-item">
-            <img src="pistolet-sportowy.jpg" alt="Pistolet sportowy">
-            <div class="overlay">Naprawa rękojeści i pełna konserwacja</div>
+            <img src="pistolet-sportowy.jpg">
+            <div class="overlay">Personalizacja chwytu i polerowanie podzespołów</div>
         </div>
-
-        <!-- Pozycja 3 -->
         <div class="gallery-item">
-            <img src="sztucer-myśliwski.jpg" alt="Sztucer myśliwski">
-            <div class="overlay">Montaż lunety oraz czyszczenie lufy</div>
+            <img src="sztucer-myśliwski.jpg">
+            <div class="overlay">Montaż lunety i odnowienie oksydy</div>
         </div>
     </div>
 </section>
 
 <section id="law">
-<div class="card">
-<h2>Prawo</h2>
-<p>Legalność</p>
-<button onclick="showSaul()">📞</button>
-</div>
-
-<div id="saul" style="display:none;">
-<h2>In legal trouble?</h2>
-<img src="jacataca.png" style="width:200px;">
-</div>
+    <div class="card">
+        <h2>Prawo</h2>
+        <div class="line"></div>
+        <p>Wszystkie usługi rusznikarskie wykonywane są zgodnie z obowiązującą ustawą o broni i amunicji. Posiadamy niezbędne koncesje MSWiA na wykonywanie napraw i modernizacji broni palnej.</p>
+        <p>Pamiętaj, że każda istotna modyfikacja broni musi być odnotowana, a bezpieczeństwo jest naszym priorytetem.</p>
+        <button onclick="toggleSaul()" style="font-size: 30px; cursor:pointer; background:none; border:none; margin-top:20px;">📞</button>
+        
+        <div id="saul" style="display:none; margin-top: 30px; border-top: 1px solid #333; padding-top: 20px;">
+            <h3>Masz kłopoty prawne?</h3>
+            <img src="jacataca.png" style="width:200px; border: 2px solid #c9a55c;">
+        </div>
+    </div>
 </section>
 
 <section id="contact">
-<h2>Kontakt</h2>
+    <div class="card">
+        <h2>Kontakt</h2>
+        <div class="line"></div>
+        <div class="contact-info">
+            <p><strong>Strona:</strong> www.spust.pl</p>
+            <p><strong>Telefon:</strong> +48 123 456 789</p>
+            <p><strong>E-mail:</strong> kontakt@spust.pl</p>
+            <p><strong>Lokalizacja:</strong> Gorlice, woj. małopolskie</p>
+        </div>
+    </div>
 </section>
 
 <script>
-
-/* scroll */
 function go(id){
     document.getElementById(id).scrollIntoView();
 }
 
-/* animacje scroll */
 function reveal(){
     document.querySelectorAll("section").forEach(sec=>{
         if(sec.getBoundingClientRect().top < window.innerHeight*0.8){
@@ -344,7 +307,6 @@ function reveal(){
 window.addEventListener("scroll",reveal);
 window.addEventListener("load",reveal);
 
-/* klik mobile */
 document.querySelectorAll(".service").forEach(el=>{
     el.onclick=()=>el.classList.toggle("active");
 });
@@ -353,11 +315,15 @@ document.querySelectorAll(".gallery-item").forEach(el=>{
     el.onclick=()=>el.classList.toggle("active");
 });
 
-/* saul */
-function showSaul(){
-    document.getElementById("saul").style.display="block";
+/* NAPRAWIONY PRZYCISK TELEFONU */
+function toggleSaul(){
+    let x = document.getElementById("saul");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
 }
-
 </script>
 
 </body>
